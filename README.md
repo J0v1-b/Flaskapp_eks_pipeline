@@ -2,7 +2,7 @@
 
 ## Welcome to my EKS Automation repository!
 
-This repository contains a collection of scripts and templates that automate the process of creating and managing an Amazon Elastic Kubernetes Service (EKS) cluster.
+This repository contains a collection of scripts and templates that automate the process of creating and managing an Amazon Elastic Kubernetes Service (EKS) cluster, deploying a flask app.
 
 The files in this repository can be used to quickly and easily spin up a new EKS cluster, and also includes a set of templates for deploying common Kubernetes resources such as Deployments, Services, and Ingress.
 
