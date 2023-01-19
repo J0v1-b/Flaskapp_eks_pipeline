@@ -1,0 +1,30 @@
+stages:
+  - build
+  - test
+  - push
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t $REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
+
+test:
+  stage: test
+  script:
+    - docker run --rm $REGISTRY/$IMAGE_NAME:$IMAGE_TAG pytest
+
+push:
+  stage: push
+  script:
+    - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+    - docker push $REGISTRY/$IMAGE_NAME:$IMAGE_TAG
+
+deploy:
+  stage: deploy
+  script:
+    - echo "$KUBECONFIG" | base64 --decode > kubeconfig.yml
+    - kubectl --kubeconfig=kubeconfig.yml apply -f deployment.yaml -n $NAMESPACE
+    - kubectl --kubeconfig=kubeconfig.yml apply -f service.yaml -n $NAMESPACE
+  environment:
+    name: production
