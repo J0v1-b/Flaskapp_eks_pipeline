@@ -5,6 +5,7 @@ provider "aws" {
 resource "aws_iam_role" "eks_cluster_role" {
   name = "eks_cluster_role"
 
+  # Define the assume role policy for the IAM role
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -25,6 +26,7 @@ resource "aws_iam_role_policy" "eks_cluster_policy" {
   name = "eks_cluster_policy"
   role = aws_iam_role.eks_cluster_role.id
 
+  # Define the policy for the IAM role
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -49,6 +51,7 @@ resource "aws_eks_cluster" "example" {
   name     = "example"
   role_arn = aws_iam_role.eks_cluster_role.arn
 
+  # Define the VPC config for the EKS cluster
   vpc_config {
     subnet_ids = ["subnet-01234567890abcdef0", "subnet-01234567890abcdef1"]
     security_group_ids = ["sg-01234567890abcdef0"]
@@ -58,10 +61,11 @@ resource "aws_eks_cluster" "example" {
 resource "aws_eks_node_group" "example" {
   cluster_name    = aws_eks_cluster.example.name
   node_group_name = "example"
+  
+  # Define the scaling config for the EKS node group
   scaling_config {
     desired_size = 2
     min_size     = 1
     max_size     = 2
   }
 }
-
