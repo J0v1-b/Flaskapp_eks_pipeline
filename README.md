@@ -1,6 +1,7 @@
 # Flask Application CI/CD pipeline
 This repository contains all the necessary code to set up a complete CI/CD pipeline for a Flask application.
 You can choose jenkins or gitlab to build your CI/CD pipeline.
+Note that "files" are the simple flask application that upload a local file and read the file format. It´s necessary to change the WORKDIR in dockerfile to your own preference.
 
 ## The pipeline includes the following stages:
 
