@@ -1,5 +1,6 @@
 # Flask Application CI/CD pipeline
 This repository contains all the necessary code to set up a complete CI/CD pipeline for a Flask application.
+You can choose jenkins or gitlab to build your CI/CD pipeline.
 
 ## The pipeline includes the following stages:
 
@@ -24,9 +25,9 @@ Push: The image is pushed to a private DockerHub repository.
 Deploy: The new image is deployed to a specified Kubernetes cluster by applying the deployment and service manifests.
 The GitLab CI/CD pipeline uses environment variables to store the credentials for the DockerHub repository and the kubeconfig file.
 
-** It's important to note that these files are examples and you may need to adjust them to match your specific requirements and the configuration of your CI/CD system.
+**It's important to note that these files are examples and you may need to adjust them to match your specific requirements and the configuration of your CI/CD system.
 
-** Also, you should consider adding stages for testing, monitoring, and rollback mechanisms in a real-world scenario.
+**Also, you should consider adding stages for testing, monitoring, and rollback mechanisms in a real-world scenario.
 
 ## How to use
 1. Clone this repository
