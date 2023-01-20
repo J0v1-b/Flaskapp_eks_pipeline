@@ -33,14 +33,15 @@ The GitLab CI/CD pipeline uses environment variables to store the credentials fo
 
 ## How to use
 1. Clone this repository
-2. Set up your CI/CD system and configure it to use the Jenkinsfile or .gitlab-ci.yml file
-3. Add the necessary environment variables and credentials to your CI/CD system
-4. Run the pipeline and see the application being built, tested, pushed, and deployed.
-5. Make sure to have the necessary dependencies and configurations to run the application on your local system.
-6. Make sure that your Kubernetes cluster is set up and configured properly to receive the deployments.
-7. Customize the pipeline to match your specific requirements and configurations.
-8. Consider adding stages for testing, monitoring, and rollback mechanisms in a real-world scenario.
-9. Regularly update and maintain the pipeline to ensure smooth and efficient deployments.
-10. It's important to note that this pipeline is intended as a starting point, and you may need to make adjustments to fit your specific use case. Additionally, it is recommended to test the pipeline thoroughly before using it in production to ensure that everything is working as expected.
+2. pip3 install -r requirements.txt
+3. Set up your CI/CD system and configure it to use the Jenkinsfile or .gitlab-ci.yml file
+4. Add the necessary environment variables and credentials to your CI/CD system
+5. Run the pipeline and see the application being built, tested, pushed, and deployed.
+6. Make sure to have the necessary dependencies and configurations to run the application on your local system.
+7. Make sure that your Kubernetes cluster is set up and configured properly to receive the deployments.
+8. Customize the pipeline to match your specific requirements and configurations.
+9. Consider adding stages for testing, monitoring, and rollback mechanisms in a real-world scenario.
+10. Regularly update and maintain the pipeline to ensure smooth and efficient deployments.
+11. It's important to note that this pipeline is intended as a starting point, and you may need to make adjustments to fit your specific use case. Additionally, it is recommended to test the pipeline thoroughly before using it in production to ensure that everything is working as expected.
 
 ##### Have a nice day!
