@@ -1,0 +1,62 @@
+Example file with each step of deploying a Flask application on Amazon Elastic Kubernetes Service (EKS) using the Dockerfile, Kubernetes manifest file, and GitLab CI/CD pipeline:
+
+
+1. Build a Docker image of your Flask application using the Dockerfile
+
+# navigate to the root directory of your application
+$ cd myflaskapp
+
+# build the Docker image
+$ docker build -t myflaskapp:latest .
+
+2. Push the Docker image to a container registry such as Amazon Elastic Container Registry (ECR) or Docker Hub:
+
+# log in to your container registry
+$ aws ecr get-login-password --region region-name | docker login --username AWS --password-stdin account-id.dkr.ecr.region-name.amazonaws.com
+
+# tag the Docker image
+$ docker tag myflaskapp:latest account-id.dkr.ecr.region-name.amazonaws.com/myflaskapp:latest
+
+# push the Docker image to the container registry
+$ docker push account-id.dkr.ecr.region-name.amazonaws.com/myflaskapp:latest
+
+3. Create an EKS cluster using the AWS Management Console or AWS CLI:
+
+# create an EKS cluster
+$ aws eks create-cluster --name my-eks-cluster --region region-name
+
+4. Configure your GitLab CI/CD pipeline to deploy the application to the EKS cluster:
+# update kubeconfig file
+$ aws eks update-kubeconfig --name my-eks-cluster --region region-name
+
+# apply k8s manifest file
+$ kubectl apply -f k8s/deployment.yml
+
+5. In the pipeline, use the kubectl command to apply the Kubernetes manifest file:
+
+# deploy the application
+$ kubectl apply -f k8s/deployment.yml
+
+6. Once the pipeline completes successfully, check the status of the resources in the cluster:
+
+# check the status of the deployment
+$ kubectl get deployments
+
+# check the status of the pods
+$ kubectl get pods
+
+# check the status of the service
+$ kubectl get services
+
+7. Use the kubectl command to access the application's logs and troubleshoot any issues that may occur during the deployment process:
+
+# check the logs of a specific pod
+$ kubectl logs <pod-name>
+
+# check the events of the resources
+$ kubectl describe deployment <deployment-name>
+$ kubectl describe pod <pod-name>
+
+
+
+
